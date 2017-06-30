@@ -14,6 +14,8 @@ def new
 end
 
 def create
+	@post = Post.create(post_params)
+	redirect_to root_path
 end
 
 def edit 
@@ -29,6 +31,10 @@ private
 
 def find_post
 	@post = Post.find(params[:id])
+end
+
+def post_params
+	params.require(:post).permit(:title, :author, :content)
 end
 
 end
